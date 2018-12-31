@@ -8,33 +8,33 @@ namespace Perceptron {
 		/// Entry point of the application.
 		/// </summary>
 		/// <param name="args"></param>
-		public static void Main(string[] args) {
-			MultiLayerPerceptron p = new MultiLayerPerceptron(2,2,1,0.1F);
-			ML_TrainingData training = new ML_TrainingData(2,1);
-			training.Create();
-			float[,] inputs = training.GetInputs();
-			float[,] outputs = training.GetOutputs();
-			for (int i = 0; i < 1000000; i++) {
-				int r = MultiLayerPerceptron.rng.Next(4);
-				float[] inp = new float[] { inputs[r,0], inputs[r,1] };
-				float[] outp = new float[] { outputs[r,0] };
-				p.Train(inp, outp);
-			}
-			for (int i = 0,length = training.data.GetLength(0); i < length; i++) {
-				float[] inp = new float[] { inputs[i,0], inputs[i,1] };
-				Console.WriteLine(p.Test(inp)[0]);
-			}
-        }
-
 		// public static void Main(string[] args) {
-		// 	Matrix a = new Matrix(2,3);
-		// 	Matrix b = new Matrix(3,2);
-		// 	a.Randomize();
-		// 	b.Randomize();
-		// 	Console.WriteLine(a);
-		// 	Console.WriteLine(b);
-		// 	Console.WriteLine(Matrix.Multiply(a,b));
+		// 	MultiLayerPerceptron p = new MultiLayerPerceptron(2,2,1,0.1F);
+		// 	ML_TrainingData training = new ML_TrainingData(2,1);
+		// 	training.Create();
+		// 	float[,] inputs = training.GetInputs();
+		// 	float[,] outputs = training.GetOutputs();
+		// 	for (int i = 0; i < 1000000; i++) {
+		// 		int r = MultiLayerPerceptron.rng.Next(4);
+		// 		float[] inp = new float[] { inputs[r,0], inputs[r,1] };
+		// 		float[] outp = new float[] { outputs[r,0] };
+		// 		p.Train(inp, outp);
+		// 	}
+		// 	for (int i = 0,length = training.data.GetLength(0); i < length; i++) {
+		// 		float[] inp = new float[] { inputs[i,0], inputs[i,1] };
+		// 		Console.WriteLine(p.Test(inp)[0]);
+		// 	}
         // }
+
+		public static void Main(string[] args) {
+			Matrix a = new Matrix(2,3);
+			Matrix b = new Matrix(3,1);
+			a.Randomize();
+			b.Randomize();
+			Console.WriteLine(a);
+			Console.WriteLine(b);
+			Console.WriteLine(Matrix.Multiply(a,b));
+        }
 
 		// public static void Main(string[] args) {
 		// 	SingleLayerPerceptron p = new SingleLayerPerceptron(2, 0.000001F, 0.4F, -1.0F);
